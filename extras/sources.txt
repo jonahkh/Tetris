@@ -1,0 +1,20 @@
+Scoring:
+Must clear 15 lines to progress to the second level.
+After the first level, it takes 15 * current level * 5
+to progress to each next level. If the hard drop key is
+used, the player receives the number of rows the piece
+moves down * 5 points. One point is also given when the 
+current piece is frozen.
+
+Each time the current piece moves down is worth 1 point.
+Clearing a line and progressing to a new level is worth 
+current_level * 40 points.
+
+
+Icons:
+https://en.wikipedia.org/wiki/Bowser_(character)
+https://en.wikipedia.org/wiki/Mario_(character)
+http://www.softicons.com/game-icons/super-mario-
+    icons-by-sandro-pereira/mushroom-super-icon
+Sounds:
+http://themushroomkingdom.net/wav.shtml 

@@ -1,0 +1,68 @@
+Tetris part B
+TCSS 305: Programming Practicum, Autumn 2015
+
+Name: Jonah Howard
+UWNetID: jonahkh
+Subversion Revision Number:
+
+Assignment Overview:
+As I said in my part A summary, I thought this assignment was extremely fun. I really wish we had more time with this because there's 
+a lot more I would like to add but I just did not have the time with how much I work, the commute I make every day, and my other courses.
+I definitely plan on adding to this in the future in order to improve my overall portfolio. The purpose of this part of the assignment
+was to give us free reign to do whatever we wanted with the project and truly make it our own, something most of us probably haven't had
+to do before for a programming project. I still do wish were were required to write our own back end code because it feels like less
+of an accomplishment since we only wrote the front end especially considering that students taking this course in the past were required
+to. 
+
+
+Technical Impression:
+There was one thing in particular that I got very annoyed with. I forgot that you mentioned in class that there was a provided sound player
+class on canvas, so I proceeded to spend half a day doing research and writing my own class called AudioManager that basically did the same 
+thing. As annoying as it was to write and find out I didn't even have to, I will admit that it was a great learning experience to figure out
+exactly how sound is added to programs instead of just using the provided code. I ended up using the provided code for in the event that there
+were unforseen bugs in mine. I also had troubles with dialogs. When the user loses my game, a JOptionPane appears prompting the user whether 
+they want to play again. If the user selected no, the frame would dispose, but the dialog woudl pop back up. After a long time spent debugging,
+I discovered that it was because I was creating this dialog in the update method, and even though I dispose my frame, the board class was still
+calling notifyObservers() which was causing an infinite loop. I originally fixed this by changing the moveDown() method in the Board class to only
+call freeze if the game was not over. Ironically, I actually just realized as I was typing this that the real bug was that my timer was still running
+and my actionPerformed() method in my GUI class was calling the moveDown() method which is what was causing the infinite loop. I fixed this by stopping
+the timer if the game was over. I also had issues with figuring out why the board was showing up as 21 rows. I just had to readjust the math a little
+becuase the piece was showing on the board before it was officially supposed to be showing. Other than those issues, the project wasn't too difficult
+in general. Given more time I would have added a lot more features and made the interface look nicer but with my other obligations I had to compromise
+unfortunately.
+
+
+Changes to the starter code:
+
+Board Class, model package -
+Line 261 added "move down" as parameter for notifyObservers in order to know when the piece moved
+down for scoring purposes.
+Line 535 added "clear line" as a parameter for notifyObservers in order to know when the piece moved
+down for scoring purposes.
+In the hardDrop() method, added count variable to track how many lines the current piece moved down and then
+called setChanged() and notifyObservers() and notifyObservers sends the cound as a parameter.
+
+SoundPlayer Class, view package -
+Lines 35 - 72 added class constants representing the audio files.
+Lines 74 - 75 added boolean field that tracked whether the mute button was selected.
+Lines 77 - 101 added constructor and helpe method for constructor that initialized the myMuted field and
+preloads all of the audio files.
+Lines 103 - 110 added mute method that sets the myMuted field to the passed boolean parameter to track if the mute button was pressed.
+Lines 112 - 119 added method to return whether or not the sounds were muted.
+
+Extra Credit:
+1. Added background music and sound effects
+2. Added a menu option to add a grid
+3. Added a menu option to mute the sound
+
+
+Unresolved problems in my submission:
+There are certain cases where there is a lag between when a line is cleared and the current piece is repainted to adjust to this. I spent a long time
+trying to figure out why and even sent an email asking for help but ended up not being able to figure it out. It doesn't happen that often, but occasionally.
+Also, if you press the mute menu option the game will lag for a second before responding. I don't know why it's doing this and I do not have any more time to
+try and investigate this.
+
+Questions:
+none.
+
+
